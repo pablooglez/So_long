@@ -6,13 +6,13 @@
 /*   By: pablogon <pablogon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 14:39:18 by pablogon          #+#    #+#             */
-/*   Updated: 2024/08/24 21:28:53 by pablogon         ###   ########.fr       */
+/*   Updated: 2024/08/24 22:21:59 by pablogon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	ft_check_map_size(char *str)
+/*int	ft_check_map_size(char *str)
 {
 	int	fd;
 	char	*line;
@@ -37,7 +37,7 @@ int	ft_check_map_size(char *str)
 		
 	}
 	
-}
+}*/
 
 int	ft_check_file(char *str)
 {
