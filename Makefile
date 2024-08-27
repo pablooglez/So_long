@@ -6,7 +6,7 @@
 #    By: pablogon <pablogon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/24 14:38:21 by pablogon          #+#    #+#              #
-#    Updated: 2024/08/24 22:21:35 by pablogon         ###   ########.fr        #
+#    Updated: 2024/08/26 20:48:57 by pablogon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,9 @@ HEADERS := -I$(LIBFT)
 
 SRCS	:= src/error.c \
 src/main.c \
-
+src/get_next_line_bonus.c \
+src/get_next_line_utils_bonus.c \
+src/utils.c \
 
 OBJS	:= ${SRCS:.c=.o}
 

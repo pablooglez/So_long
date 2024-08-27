@@ -6,13 +6,13 @@
 /*   By: pablogon <pablogon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 21:32:04 by pablogon          #+#    #+#             */
-/*   Updated: 2024/08/24 18:07:49 by pablogon         ###   ########.fr       */
+/*   Updated: 2024/08/26 20:31:02 by pablogon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../get_next_line_bonus.h"
 
-char	*ft_strjoin(const char *str1, const char *str2)
+char	*ftg_strjoin(const char *str1, const char *str2)
 {
 	char			*ret;
 	unsigned int	len1;
@@ -22,8 +22,8 @@ char	*ft_strjoin(const char *str1, const char *str2)
 	i = 0;
 	if (!str1 || !str2)
 		return (0);
-	len1 = ft_strlen(str1);
-	len2 = ft_strlen(str2);
+	len1 = ftg_strlen(str1);
+	len2 = ftg_strlen(str2);
 	ret = malloc(sizeof(char) * ((len1 + len2) + 1));
 	if (!ret)
 		return (0);
@@ -72,10 +72,10 @@ static char	*ft_extractline(char **storage, int findnewline)
 	char	*newstorage;
 	char	*line;
 
-	line = ft_substr (*storage, 0, findnewline + 1);
+	line = ftg_substr (*storage, 0, findnewline + 1);
 	if (!line)
 		return (ft_freestorage(storage));
-	newstorage = ft_strdup(&(*storage)[findnewline + 1]);
+	newstorage = ftg_strdup(&(*storage)[findnewline + 1]);
 	free (*storage);
 	*storage = newstorage;
 	if (!*storage)
@@ -86,7 +86,7 @@ static char	*ft_extractline(char **storage, int findnewline)
 char	*get_next_line(int fd)
 {
 	int				findnewline;
-	static char		*storage[MAX_FD];
+	static char		*storage[1024];
 	char			*aux;
 
 	if (fd < 0)
@@ -99,7 +99,7 @@ char	*get_next_line(int fd)
 	findnewline = ft_searchnewline(storage[fd]);
 	if (findnewline == -1)
 	{
-		aux = ft_strdup(storage[fd]);
+		aux = ftg_strdup(storage[fd]);
 		free (storage[fd]);
 		storage[fd] = NULL;
 		return (aux);

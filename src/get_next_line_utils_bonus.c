@@ -6,13 +6,13 @@
 /*   By: pablogon <pablogon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 21:32:40 by pablogon          #+#    #+#             */
-/*   Updated: 2024/08/24 18:10:13 by pablogon         ###   ########.fr       */
+/*   Updated: 2024/08/26 20:21:53 by pablogon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../get_next_line_bonus.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ftg_strlen(const char *s)
 {
 	int	i;
 
@@ -22,14 +22,14 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strdup(const char *s1)
+char	*ftg_strdup(const char *s1)
 {
 	char			*str;
 	unsigned int	len;
 	unsigned int	i;
 
 	i = 0;
-	len = ft_strlen(s1);
+	len = ftg_strlen(s1);
 	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
@@ -42,17 +42,17 @@ char	*ft_strdup(const char *s1)
 	return (str);
 }
 
-char	*ft_substr(const char *s, unsigned int start, size_t len)
+char	*ftg_substr(const char *s, unsigned int start, size_t len)
 {
 	char			*str;
 	unsigned int	m_len;
 	unsigned int	i;
 
 	i = 0;
-	if (start > ft_strlen(s))
+	if (start > ftg_strlen(s))
 		m_len = 0;
 	else
-		m_len = ft_strlen(s) - start;
+		m_len = ftg_strlen(s) - start;
 	if (len > m_len)
 		len = m_len;
 	len += 1;
@@ -93,7 +93,7 @@ char	*ft_readifdonthavenewline(char *storage, int fd)
 				return (ft_freestorage(&storage));
 			return (storage);
 		}
-		new = ft_strjoin(storage, buffer);
+		new = ftg_strjoin(storage, buffer);
 		if (!new)
 			return (ft_freestorage(&storage));
 		free (storage);

@@ -6,13 +6,13 @@
 /*   By: pablogon <pablogon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 14:39:18 by pablogon          #+#    #+#             */
-/*   Updated: 2024/08/24 22:21:59 by pablogon         ###   ########.fr       */
+/*   Updated: 2024/08/27 17:56:23 by pablogon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-/*int	ft_check_map_size(char *str)
+int	ft_check_map_size(char *str)
 {
 	int	fd;
 	char	*line;
@@ -29,15 +29,17 @@
 		return(0);
 	}
 	
-	len = ft_strlen(line);
-	free(line);
-
+	len = ft_strlen_so_long(line);
 	while (line)
 	{
-		
+		free(line);
+		line = get_next_line(fd);
+		if (line && len != ft_strlen_so_long(line))
+			return (0);
 	}
+	return (1);
 	
-}*/
+}
 
 int	ft_check_file(char *str)
 {
@@ -62,7 +64,12 @@ int	main(int argc, char **argv)
 {
 	if (argc == 2)
 	{
-		printf("correct extension -> %d", ft_check_file(argv[1]));
+		printf("correct extension -> %d\n", ft_check_file(argv[1]));
+		printf("correct map size -> %d\n", ft_check_map_size(argv[1]));
+		/*if (ft_check_file(argv[1]) == 1 && ft_check_map_size(argv[1]) == 1)
+			create_game(argv[1]);
+		else
+			ft_error("Incorrect Map");*/
 	}
 	else
 		ft_error("ERROR");

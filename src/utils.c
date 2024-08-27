@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pablogon <pablogon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/24 14:13:29 by pablogon          #+#    #+#             */
-/*   Updated: 2024/08/27 17:57:18 by pablogon         ###   ########.fr       */
+/*   Created: 2024/08/26 20:41:21 by pablogon          #+#    #+#             */
+/*   Updated: 2024/08/27 17:43:31 by pablogon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	ft_error(char *msg)
+int	ft_strlen_so_long(char *str)
 {
-	write (2, msg, ft_strlen(msg));
-	write (2, "\n", 1);
-	exit (EXIT_FAILURE);
+	int	i;
+
+	i = 0;
+	if(!str)
+		return (0);
+	while (str[i] && str[i] != '\n')
+		i++;
+	return (i);
+}
+
+void ft_hook(void *param)
+{
+	const mlx_t* mlx = param;
+
+	printf("WIDTH: %d | HEIGHT: %d\n", mlx->width, mlx->height);
 }
