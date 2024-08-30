@@ -6,11 +6,11 @@
 /*   By: pablogon <pablogon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 21:32:04 by pablogon          #+#    #+#             */
-/*   Updated: 2024/08/26 20:31:02 by pablogon         ###   ########.fr       */
+/*   Updated: 2024/08/28 18:06:29 by pablogon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../get_next_line_bonus.h"
+#include "get_next_line_bonus.h"
 
 char	*ftg_strjoin(const char *str1, const char *str2)
 {

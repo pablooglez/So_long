@@ -6,72 +6,50 @@
 /*   By: pablogon <pablogon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 14:39:18 by pablogon          #+#    #+#             */
-/*   Updated: 2024/08/27 17:56:23 by pablogon         ###   ########.fr       */
+/*   Updated: 2024/08/29 22:22:54 by pablogon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
-
-int	ft_check_map_size(char *str)
-{
-	int	fd;
-	char	*line;
-	int	len;
-	
-	fd = open(str, O_RDONLY);
-	if (fd < 0)
-		return (0);
-		
-	line = get_next_line(fd);
-	if (!line)
-	{
-		close(fd);
-		return(0);
-	}
-	
-	len = ft_strlen_so_long(line);
-	while (line)
-	{
-		free(line);
-		line = get_next_line(fd);
-		if (line && len != ft_strlen_so_long(line))
-			return (0);
-	}
-	return (1);
-	
-}
-
-int	ft_check_file(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (ft_strlen(str) > 4)
-	{
-		while (str[i])
-		{
-			if (ft_strncmp(&str[i], ".ber\0", 5) == 0)
-			{
-				return (1);
-			}
-			i++;
-		}
-	}
-	return (0);
-}
+#include "so_long.h"
 
 int	main(int argc, char **argv)
 {
+	t_so_long	game;
+	
+	int	i = 0;
 	if (argc == 2)
 	{
-		printf("correct extension -> %d\n", ft_check_file(argv[1]));
-		printf("correct map size -> %d\n", ft_check_map_size(argv[1]));
-		/*if (ft_check_file(argv[1]) == 1 && ft_check_map_size(argv[1]) == 1)
-			create_game(argv[1]);
-		else
-			ft_error("Incorrect Map");*/
+		if (!ft_check_file(argv[1]))
+			ft_error("Error: Invalid file extension");
+		ft_init_game(&game);
+		if (!ft_check_map_size(&game,argv[1]))
+			ft_error("Error: Invalid map size");
+		ft_load_map(&game, argv[1]);
+		if (!ft_check_correct_characters(&game))
+			ft_error("Error: El mapa contiene caracteres no permitidos");
+		if (!ft_check_walls(&game))
+			ft_error("Error: El mapa no esta rodeado de paredes");
+		ft_duplicate_map(&game);
+
+		ft_get_player_position(&game);
+		if (game.x == -1 && game.y == -1)
+			ft_error("Error: No se encontro la posicion del jugador");
+
+		flood_fill(&game, game.x, game.y);
+		while (game.dup[i])
+		{
+			write (1, game.dup[i], ft_strlen(game.dup[i]));
+			i++;
+		}
+		if (!ft_check_access(&game))
+			ft_error("Error: No son accesibles todas las monedas y salidas");
+		ft_print_images(&game);
+		ft_mlx_init(&game);
+		ft_hook(&game, game.init);
+		mlx_loop(game.init);
+		mlx_terminate(game.init);
 	}
 	else
-		ft_error("ERROR");
+		ft_error("ERROR: Invalid number of arguments");
 	return (0);
 }

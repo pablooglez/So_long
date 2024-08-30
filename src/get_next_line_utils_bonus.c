@@ -6,11 +6,11 @@
 /*   By: pablogon <pablogon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 21:32:40 by pablogon          #+#    #+#             */
-/*   Updated: 2024/08/26 20:21:53 by pablogon         ###   ########.fr       */
+/*   Updated: 2024/08/28 18:06:37 by pablogon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../get_next_line_bonus.h"
+#include "get_next_line_bonus.h"
 
 size_t	ftg_strlen(const char *s)
 {

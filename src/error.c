@@ -6,11 +6,11 @@
 /*   By: pablogon <pablogon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 14:13:29 by pablogon          #+#    #+#             */
-/*   Updated: 2024/08/27 17:57:18 by pablogon         ###   ########.fr       */
+/*   Updated: 2024/08/28 18:06:12 by pablogon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long.h"
 
 void	ft_error(char *msg)
 {

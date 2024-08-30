@@ -6,66 +6,49 @@
 /*   By: pablogon <pablogon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 17:53:21 by pablogon          #+#    #+#             */
-/*   Updated: 2024/08/27 21:38:53 by pablogon         ###   ########.fr       */
+/*   Updated: 2024/08/29 20:19:10 by pablogon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long.h"
 
 void	ft_load_map(t_so_long *game, char *filename)
 {
 	int		fd;
 	char	*line;
-	int		i;
-	int		j;
-	i = 0;
-
+	int		x;
+	int		y;
+	x = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		ft_error("Error: No se pudo abrir el archivo del mapa");
+		ft_error("Error: Couldn't open the map file");
 	
 	game->map = (char **)malloc(sizeof(char *) * (game->height + 1));
 	if (!game->map)
-		ft_error("Error: No se pudo asignar memoria al mapa");
+		ft_error("Error: Couldn't allocate memory to the map.");
 	
 	line = get_next_line(fd);
 	while (line)
 	{
-		game->map[i] = line;
-		game->width = ft_strlen_so_long(fd);
-		j = 0;
-		while (line[j])
+		game->map[x] = line;
+		game->width = ft_strlen_so_long(line);
+		y = 0;
+		while (line[y])
 		{
-			if (line[j] == 'P')
+			if (line[y] == 'P')
 				game->player++;
-			else if (line[j] == 'C')
+			else if (line[y] == 'C')
 				game->coin++;
-			else if (line[j] == 'E')
+			else if (line[y] == 'E')
 					game->exit++;
+			y++;
 		}
 		line = get_next_line(fd);
-		i++;
+		x++;
 	}
-	game->map[i] = '\0';
+	game->map[x] = NULL;
 	close(fd);
 }
-
-
-int	ft_check_items_game(t_so_long *game)
-{
-	if (game->coin >= 1 && game->player == 1 && game->exit == 1)
-		return (1);
-	else
-		ft_error("Error: El mapa no contiene el items especificado");
-}
-
-int	ft_check_correct_characters(t_so_long *game)
-{
-	
-}
-
-
-
 
 void	ft_init_game(t_so_long *game)
 {
@@ -74,10 +57,9 @@ void	ft_init_game(t_so_long *game)
 	game->player = 0;
 	game->coin = 0;
 	game->exit = 0;
-	game->position_x = 0;
-	game->position_y = 0;
 	game->map = NULL;
 	game->dup = NULL;
-	game->init = NULL;
+	game->x = -1;
+	game->y= -1;
 }
 
