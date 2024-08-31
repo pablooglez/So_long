@@ -6,7 +6,7 @@
 #    By: pablogon <pablogon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/24 14:38:21 by pablogon          #+#    #+#              #
-#    Updated: 2024/08/31 14:30:38 by pablogon         ###   ########.fr        #
+#    Updated: 2024/08/31 23:37:52 by pablogon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ src/get_next_line_bonus.c \
 src/get_next_line_utils_bonus.c \
 src/main.c \
 src/map.c \
+src/moves.c \
 src/utils.c \
 
 

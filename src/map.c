@@ -6,7 +6,7 @@
 /*   By: pablogon <pablogon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 17:53:21 by pablogon          #+#    #+#             */
-/*   Updated: 2024/08/30 19:31:54 by pablogon         ###   ########.fr       */
+/*   Updated: 2024/08/31 23:43:58 by pablogon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,14 @@ void	ft_load_map(t_so_long *game, char *filename)
 	char	*line;
 	int		x;
 	int		y;
+
 	x = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		ft_error("Error: Couldn't open the map file");
-	
+		ft_error(game, "Error: Couldn't open the map file");
 	game->map = (char **)malloc(sizeof(char *) * (game->height + 1));
 	if (!game->map)
-		ft_error("Error: Couldn't allocate memory to the map.");
-	
+		ft_error(game, "Error: Couldn't allocate memory to the map.");
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -40,7 +39,7 @@ void	ft_load_map(t_so_long *game, char *filename)
 			else if (line[y] == 'C')
 				game->total_coins++;
 			else if (line[y] == 'E')
-					game->exit++;
+				game->exit++;
 			y++;
 		}
 		line = get_next_line(fd);
@@ -48,6 +47,22 @@ void	ft_load_map(t_so_long *game, char *filename)
 	}
 	game->map[x] = NULL;
 	close(fd);
+}
+
+void	ft_free_map(t_so_long *game)
+{
+	int	i;
+
+	if (game->map)
+	{
+		i = game->height;
+		while (i > 0)
+		{
+			free(game->map[--i]);
+		}
+		free(game->map);
+		game->map = NULL;
+	}
 }
 
 void	ft_init_game(t_so_long *game)
@@ -58,9 +73,15 @@ void	ft_init_game(t_so_long *game)
 	game->coin = 0;
 	game->total_coins = 0;
 	game->exit = 0;
-	game->map = NULL;
-	game->dup = NULL;
+	game->count = 0;
 	game->x = -1;
-	game->y= -1;
+	game->y = -1;
+	game->moves = 0;
+	game->map = NULL;
+	game->init = NULL;
+	game->img_floor = NULL;
+	game->img_wall = NULL;
+	game->img_coin = NULL;
+	game->img_exit = NULL;
+	game->img_player = NULL;
 }
-
