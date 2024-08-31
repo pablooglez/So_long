@@ -6,14 +6,14 @@
 #    By: pablogon <pablogon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/24 14:38:21 by pablogon          #+#    #+#              #
-#    Updated: 2024/08/29 22:33:40 by pablogon         ###   ########.fr        #
+#    Updated: 2024/08/31 14:30:38 by pablogon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME:= so_long
 
 CFLAGS:= -g -Wall -Werror -Wextra \
-		#-g -fsanitize=address,undefined \
+		-g -fsanitize=address,undefined \
 		#-Wunreachable-code -Ofast \
 
 

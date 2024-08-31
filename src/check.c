@@ -6,7 +6,7 @@
 /*   By: pablogon <pablogon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 16:34:43 by pablogon          #+#    #+#             */
-/*   Updated: 2024/08/29 20:32:33 by pablogon         ###   ########.fr       */
+/*   Updated: 2024/08/30 19:33:45 by pablogon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	ft_check_file(char *str)
 
 int	ft_check_items_game(t_so_long *game)
 {
-	if (game->coin >= 1 && game->player == 1 && game->exit == 1)
+	if (game->total_coins >= 1 && game->player == 1 && game->exit == 1)
 		return (1);
 	ft_error("Error: El mapa no contiene los items especificado");
 	return (0);

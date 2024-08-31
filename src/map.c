@@ -6,7 +6,7 @@
 /*   By: pablogon <pablogon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 17:53:21 by pablogon          #+#    #+#             */
-/*   Updated: 2024/08/29 20:19:10 by pablogon         ###   ########.fr       */
+/*   Updated: 2024/08/30 19:31:54 by pablogon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_load_map(t_so_long *game, char *filename)
 			if (line[y] == 'P')
 				game->player++;
 			else if (line[y] == 'C')
-				game->coin++;
+				game->total_coins++;
 			else if (line[y] == 'E')
 					game->exit++;
 			y++;
@@ -56,6 +56,7 @@ void	ft_init_game(t_so_long *game)
 	game->height = 0;
 	game->player = 0;
 	game->coin = 0;
+	game->total_coins = 0;
 	game->exit = 0;
 	game->map = NULL;
 	game->dup = NULL;

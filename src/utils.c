@@ -6,7 +6,7 @@
 /*   By: pablogon <pablogon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 20:41:21 by pablogon          #+#    #+#             */
-/*   Updated: 2024/08/28 18:07:04 by pablogon         ###   ########.fr       */
+/*   Updated: 2024/08/31 15:00:28 by pablogon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,21 @@ int	ft_strlen_so_long(char *str)
 	while (str[i] && str[i] != '\n')
 		i++;
 	return (i);
+}
+
+void	ft_win(t_so_long *game)
+{
+	printf("¡Has ganado!\n");
+	mlx_terminate(game->init);
+	exit(0);
+}
+
+void	ft_cleanup(t_so_long *game)
+{
+	mlx_delete_texture(game->txt_coin);
+	mlx_delete_texture(game->txt_exit);
+	mlx_delete_texture(game->txt_wall);
+	mlx_delete_texture(game->txt_player);
+	mlx_delete_texture(game->txt_floor);
+	mlx_terminate(game->init);
 }

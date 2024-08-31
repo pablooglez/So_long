@@ -6,7 +6,7 @@
 /*   By: pablogon <pablogon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 20:10:43 by pablogon          #+#    #+#             */
-/*   Updated: 2024/08/29 20:30:47 by pablogon         ###   ########.fr       */
+/*   Updated: 2024/08/30 14:03:33 by pablogon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ void	ft_get_player_position(t_so_long *game)
 void		flood_fill(t_so_long *game, int x, int y)
 {
 	if (x < 0 || x >= game->width || y < 0 || y >=game->height || game->dup[y][x] == '1'
-	|| game->dup[y][x] == 'F')
+	|| game->dup[y][x] == '1')
 		return;
-	game->dup[y][x] = 'F';
+	game->dup[y][x] = '1';
 	flood_fill(game, x + 1, y);
 	flood_fill(game, x - 1, y);
 	flood_fill(game, x, y + 1);
@@ -80,10 +80,9 @@ int	ft_check_access(t_so_long *game)
 		x = 0;
 		while (x < game->width)
 		{
-			if (game->dup[y][x] == 'C' || game->dup[y][x] == 'E')
+			if (game->dup[y][x] == 'C' || game->dup[y][x] == 'E' || game->dup[y][x] == 'P')
 			{
-				if (game->dup[y][x] != 'F')
-					return (0);
+				ft_error("Error: No valid path");
 			}
 			x++;
 		}

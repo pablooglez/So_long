@@ -6,7 +6,7 @@
 /*   By: pablogon <pablogon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 14:14:05 by pablogon          #+#    #+#             */
-/*   Updated: 2024/08/29 21:18:57 by pablogon         ###   ########.fr       */
+/*   Updated: 2024/08/31 15:00:48 by pablogon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,7 @@
 # include "../Libft/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "get_next_line_bonus.h"
-#define WIDTH 256
-#define HEIGHT 256
 # define PIXEL 64
-
-
 
 typedef struct s_so_long
 {
@@ -32,11 +28,13 @@ typedef struct s_so_long
 	int			height;
 	int			player;
 	int			coin;
+	int			total_coins;
 	int			exit;
 	int			x;
 	int			y;
 	char		**map;
 	char		**dup;
+	void		*win;
 	mlx_t		*init;
 	mlx_texture_t	*txt_coin;
 	mlx_texture_t	*txt_door;
@@ -54,8 +52,11 @@ typedef struct s_so_long
 
 //--------------------CREATE-GAME--------------//
 void	ft_mlx_init(t_so_long *game);
-void	ft_hook(t_so_long *game, void *param);
+void	ft_init_images(t_so_long *game);
+void	ft_print_static_images(t_so_long *game);
 void	ft_print_images(t_so_long *game);
+void	ft_keymoves(mlx_key_data_t keydata, void *game);
+void	ft_move_player(t_so_long *game, int position_x, int position_y);
 
 //--------------------CHECK--------------------//
 int					ft_check_map_size(t_so_long *game, char *str);
@@ -80,6 +81,8 @@ void				ft_init_game(t_so_long *game);
 
 //--------------------UTILS--------------------//
 int					ft_strlen_so_long(char *str);
+void				ft_win(t_so_long *game);
+void				ft_cleanup(t_so_long *game);
 
 
 #endif
