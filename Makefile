@@ -6,7 +6,7 @@
 #    By: pablogon <pablogon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/24 14:38:21 by pablogon          #+#    #+#              #
-#    Updated: 2024/08/31 23:37:52 by pablogon         ###   ########.fr        #
+#    Updated: 2024/09/02 18:34:47 by pablogon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,9 @@ src/get_next_line_utils_bonus.c \
 src/main.c \
 src/map.c \
 src/moves.c \
+src/moving.c \
 src/utils.c \
+src/utils2.c \
 
 
 OBJS	:= ${SRCS:.c=.o}

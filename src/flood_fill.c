@@ -6,7 +6,7 @@
 /*   By: pablogon <pablogon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 20:10:43 by pablogon          #+#    #+#             */
-/*   Updated: 2024/08/31 20:38:36 by pablogon         ###   ########.fr       */
+/*   Updated: 2024/09/02 14:05:10 by pablogon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	ft_duplicate_map(t_so_long *game)
 	y = 0;
 	game->dup = (char **)malloc(sizeof(char *) * (game->height + 1));
 	if (!game->dup)
-		ft_error(game, "Error: Could not allocate memory to map duplicate");
+		ft_error("Error: Could not allocate memory to map duplicate");
 	while (y < game->height)
 	{
 		game->dup[y] = ft_strdup(game->map[y]);
 		if (!game->dup[y])
-			ft_error (game, "Error: Could not duplicate a row on the map");
+			ft_error ("Error: Could not duplicate a row on the map");
 		y++;
 	}
 	game->dup[y] = NULL;
@@ -97,7 +97,7 @@ int	ft_check_access(t_so_long *game)
 			if (game->dup[y][x] == 'C' || game->dup[y][x] == 'E'
 			|| game->dup[y][x] == 'P')
 			{
-				ft_error(game, "Error: No valid path");
+				ft_error("Error: No valid path");
 			}
 			x++;
 		}

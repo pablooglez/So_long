@@ -6,7 +6,7 @@
 /*   By: pablogon <pablogon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 14:14:05 by pablogon          #+#    #+#             */
-/*   Updated: 2024/09/01 00:03:09 by pablogon         ###   ########.fr       */
+/*   Updated: 2024/09/02 18:36:58 by pablogon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ typedef struct s_so_long
 	int				x;
 	int				y;
 	int				count;
-	int				moves;
 	char			**map;
 	char			**dup;
 	void			*win;
@@ -65,9 +64,7 @@ void			put_textures(t_so_long *game);
 void			put_floor(t_so_long *game);
 
 //--------------------ERROR--------------------//
-void			ft_error(t_so_long *game, char *msg);
-void			ft_error_mlx(void);
-void			ft_error_cleanup(t_so_long *game, char *msg);
+void			ft_error(char *msg);
 
 //--------------------FLOOD_FILL---------------//
 void			ft_duplicate_map(t_so_long *game);
@@ -78,20 +75,29 @@ int				ft_check_access(t_so_long *game);
 
 //--------------------MAIN---------------------//
 void			ft_check_game(t_so_long *game, char *file);
-void			ft_run_mlx(t_so_long *game);
 
 //--------------------MAP----------------------//
+void			ft_count_elements(t_so_long *game, char *line);
 void			ft_load_map(t_so_long *game, char *filename);
-void			ft_free_map(t_so_long *game);
-void			ft_init_game(t_so_long *game);
 
 //-------------------MOVES---------------------//
-void			ft_move_player(t_so_long *game, int position_x, int position_y);
+void			ft_move_player(t_so_long *game);
+
+//-------------------MOVING--------------------//
 void			ft_keymoves(mlx_key_data_t keydata, void *param);
+void			ft_keymove_w(mlx_key_data_t keydata, void *param);
+void			ft_keymove_a(mlx_key_data_t keydata, void *param);
+void			ft_keymove_s(mlx_key_data_t keydata, void *param);
+void			ft_keymove_d(mlx_key_data_t keydata, void *param);
 
 //--------------------UTILS--------------------//
 int				ft_strlen_so_long(char *str);
 void			ft_win(t_so_long *game);
+void			ft_free_map(t_so_long *game);
+void			ft_init_game(t_so_long *game);
 void			ft_cleanup(t_so_long *game);
+
+//--------------------UTILS2-------------------//
+int				passable_box(t_so_long *game, int new_x, int new_y);
 
 #endif
